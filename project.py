@@ -132,7 +132,7 @@ class Shortener(http.server.BaseHTTPRequestHandler):
         if 'request' in self.path:
             if('gitlab' in request_headers.as_string().lower()):
                 print('The header contain gitlab, so we assume the request is comming from gitlab...')
-                author = data['commits'][0]['author']['name']
+                author = data['user_username']
                 print("Author: {}".format(author))
                 hash = data['commits'][0]['id'][0:6] 
                 print("Hash: {}".format(hash))
