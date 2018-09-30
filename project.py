@@ -130,13 +130,22 @@ class Shortener(http.server.BaseHTTPRequestHandler):
         print("<----- Request End -----\n")
 
         if 'request' in self.path:
-            
-            author = data['push']['changes'][0]['new']['target']['author']['user']['username']
-            print("Author: {}".format(author))
-            hash = data['push']['changes'][0]['new']['target']['hash'][0:6] 
-            print("Hash: {}".format(hash))
-            summary = data['push']['changes'][0]['new']['target']['message'].rstrip()[0:6] + '...'
-            print("Summary: {}".format(summary))
+            if('gitlab' in request_headers.lower()):
+                print('The header contain gitlab, so we assume the request is comming from gitlab...')
+                author = data['commits'][0]['author']['name']
+                print("Author: {}".format(author))
+                hash = data['commits'][0]['id'][0:6] 
+                print("Hash: {}".format(hash))
+                summary = author = data['commits'][0]['message'].rstrip()[0:6] + '...'
+                print("Summary: {}".format(summary))
+            else:
+                print('The header does NOT contain gitlab, so we assume the request is comming from github...')
+                author = data['push']['changes'][0]['new']['target']['author']['user']['username']
+                print("Author: {}".format(author))
+                hash = data['push']['changes'][0]['new']['target']['hash'][0:6] 
+                print("Hash: {}".format(hash))
+                summary = data['push']['changes'][0]['new']['target']['message'].rstrip()[0:6] + '...'
+                print("Summary: {}".format(summary))
 
             print("my_user: \"" + my_user.rstrip() + "\"; author: \"" + author.rstrip() + "\"")
             if ( my_user.rstrip() != author.rstrip()):
