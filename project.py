@@ -130,7 +130,7 @@ class Shortener(http.server.BaseHTTPRequestHandler):
         print("<----- Request End -----\n")
 
         if 'request' in self.path:
-            if('gitlab' in request_headers.lower()):
+            if('gitlab' in request_headers.as_string().lower()):
                 print('The header contain gitlab, so we assume the request is comming from gitlab...')
                 author = data['commits'][0]['author']['name']
                 print("Author: {}".format(author))
