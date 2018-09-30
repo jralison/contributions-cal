@@ -118,6 +118,19 @@ class ThreadHTTPServer(ThreadingMixIn, http.server.HTTPServer):
 
 class Shortener(http.server.BaseHTTPRequestHandler):
     def do_POST(self):
+        request_path = self.path
+        
+        print("\n----- Request Start ----->\n")
+        print(request_path)
+        
+        request_headers = self.headers
+        content_length = request_headers.getheaders('content-length')
+        length = int(content_length[0]) if content_length else 0
+        
+        print(request_headers)
+        print(self.rfile.read(length))
+        print("<----- Request End -----\n")
+
         if 'request' in self.path:
             self.data_string = self.rfile.read(int(self.headers['Content-Length']))
             data = simplejson.loads(self.data_string)
@@ -181,6 +194,12 @@ class Shortener(http.server.BaseHTTPRequestHandler):
 
 
     def do_GET(self):
+        request_path = self.path        
+        print("\n----- Request Start ----->\n")
+        print(request_path)
+        print(self.headers)
+        print("<----- Request End -----\n")
+        
         if 'request' in self.path:
             if not have_git:
                 print(GIT_MISSING)
