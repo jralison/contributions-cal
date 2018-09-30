@@ -124,11 +124,8 @@ class Shortener(http.server.BaseHTTPRequestHandler):
         print(request_path)
         
         request_headers = self.headers
-        content_length = request_headers.getheaders('content-length')
-        length = int(content_length[0]) if content_length else 0
         
         print(request_headers)
-        print(self.rfile.read(length))
         print("<----- Request End -----\n")
 
         if 'request' in self.path:
@@ -199,7 +196,7 @@ class Shortener(http.server.BaseHTTPRequestHandler):
         print(request_path)
         print(self.headers)
         print("<----- Request End -----\n")
-        
+
         if 'request' in self.path:
             if not have_git:
                 print(GIT_MISSING)
