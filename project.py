@@ -122,15 +122,15 @@ class Shortener(http.server.BaseHTTPRequestHandler):
         
         print("\n----- Request Start ----->\n")
         print(request_path)
-        
         request_headers = self.headers
-        
         print(request_headers)
+        self.data_string = self.rfile.read(int(self.headers['Content-Length']))
+        data = simplejson.loads(self.data_string)
+        print(data)
         print("<----- Request End -----\n")
 
         if 'request' in self.path:
-            self.data_string = self.rfile.read(int(self.headers['Content-Length']))
-            data = simplejson.loads(self.data_string)
+            
             author = data['push']['changes'][0]['new']['target']['author']['user']['username']
             print("Author: {}".format(author))
             hash = data['push']['changes'][0]['new']['target']['hash'][0:6] 
