@@ -136,7 +136,7 @@ class Shortener(http.server.BaseHTTPRequestHandler):
                 print("Author: {}".format(author))
                 hash = data['commits'][0]['id'][0:6] 
                 print("Hash: {}".format(hash))
-                summary = author = data['commits'][0]['message'].rstrip()[0:6] + '...'
+                summary = data['commits'][0]['message'].rstrip()[0:6] + '...'
                 print("Summary: {}".format(summary))
             else:
                 print('The header does NOT contain gitlab, so we assume the request is comming from github...')
