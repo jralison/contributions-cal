@@ -4,7 +4,7 @@ This is an open-source project that when used makes your Github Contributions Ca
 
 
 
-References:
+## References:
 * How to get the current time in Python. URL:<https://stackoverflow.com/questions/415511/how-to-get-the-current-time-in-python>.
 
 * Prepend line to beginning of a file. URL: < https://stackoverflow.com/questions/5914627/prepend-line-to-beginning-of-a-file >.
@@ -92,3 +92,7 @@ References:
 * Getting Started - First-Time Git Setup. URL: <https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup>.
 
 * How do I push to GitHub under a different username? URL: <https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup>.
+
+## License
+ 
+The MIT License (MIT)
