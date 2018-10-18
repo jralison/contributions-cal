@@ -1,6 +1,6 @@
 # contributions-cal
 
-This is an open-source project that when used makes your Github Contributions Calendar to reflect all efforts you do in yours on-line repositories (currently Bitbucket and Gitlab). Details about it and how to reuse it are available in this artigo on Medium: [Is Github Contributions Calendar reflecting all efforts you do in yours on-line repositories?](https://medium.com/@flauberjp/is-github-contributions-calendar-reflecting-all-efforts-you-do-in-your-on-line-repositories-1550f7961278)
+This is an open-source project that when used makes your Github Contributions Calendar to reflect all efforts you do in yours on-line repositories (currently Bitbucket and Gitlab). Details about it and how to reuse it are available in this article on Medium: [Is Github Contributions Calendar reflecting all efforts you do in yours on-line repositories?](https://medium.com/@flauberjp/is-github-contributions-calendar-reflecting-all-efforts-you-do-in-your-on-line-repositories-1550f7961278)
 
 
 
