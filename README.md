@@ -5,7 +5,11 @@ This is an open-source project that when used makes your Github Contributions Ca
 
 
 ## References:
-* How to get the current time in Python. URL:<https://stackoverflow.com/questions/415511/how-to-get-the-current-time-in-python>.
+* Adding lines after specific line. URL:< https://stackoverflow.com/questions/21285533/adding-lines-after-specific-line/21286092 >.
+
+* Javascript library used for charts: Chart.js. URL:<http://www.chartjs.org/>.
+
+* How to get the current time in Python. URL:< https://stackoverflow.com/questions/415511/how-to-get-the-current-time-in-python >.
 
 * Prepend line to beginning of a file. URL: < https://stackoverflow.com/questions/5914627/prepend-line-to-beginning-of-a-file >.
 
