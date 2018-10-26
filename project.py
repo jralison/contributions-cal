@@ -129,8 +129,10 @@ class Shortener(http.server.BaseHTTPRequestHandler):
         print(data)
         print("<----- Request End -----\n")
 
+        repository_type = ''
         if 'request' in self.path:
             if('gitlab' in request_headers.as_string().lower()):
+                repository_type = 'Gitlab'
                 print('The header contain gitlab, so we assume the request is comming from gitlab...')
                 author = data['user_username']
                 print("Author: {}".format(author))
@@ -139,6 +141,7 @@ class Shortener(http.server.BaseHTTPRequestHandler):
                 summary = data['commits'][0]['message'].rstrip()[0:6] + '...'
                 print("Summary: {}".format(summary))
             else:
+                repository_type = 'Bitbucket'
                 print('The header does NOT contain gitlab, so we assume the request is comming from github...')
                 author = data['push']['changes'][0]['new']['target']['author']['user']['username']
                 print("Author: {}".format(author))
@@ -160,19 +163,29 @@ class Shortener(http.server.BaseHTTPRequestHandler):
 
                 commit_message = the_date + ' ' + the_time + ' ' + hash + ' ' + summary
 
-                #lastPartOfThePath = self.path.rsplit('/', 1)[-1]
-                #if(lastPartOfThePath != 'request'):
-                #    commit_message += ' ' + lastPartOfThePath
+                ##
+                with open(file_of_evidences_fullPath, "r") as in_file:
+                    buf = in_file.readlines()
 
-                with open(file_of_evidences_fullPath, 'r+') as f:
-                    content = f.read()
-                    f.seek(0, 0)
-                    f.write(commit_message + '<BR>' + content)
-                    f.close()
-
-                # re-create the content of temp file
-                #with open('tempFile', 'wb') as tempFile:
-                #    tempFile.write(os.urandom(1024))
+                with open(file_of_evidences_fullPath, "w") as out_file:
+                    for line in buf:
+                        if line.strip() == "<tbody>":
+                            newContent = "\
+                                <tr> \
+                                    <td>\
+                                        " + the_date + ' ' + the_time +  + "\
+                                    </td>\
+                                    <td>\
+                                        " + hash + ' ' + summary +  + "\
+                                    </td>\
+                                    <td class=\"" + repository_type + "\">\
+                                        " + repository_type + "\
+                                    </td>\
+                                </tr>\
+                                "
+                            line = line + newContent
+                        out_file.write(line)
+                ##
 
                 index = repo.index
                 index.add([repo.working_tree_dir + '/*'])
