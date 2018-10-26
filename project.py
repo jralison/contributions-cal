@@ -173,10 +173,10 @@ class Shortener(http.server.BaseHTTPRequestHandler):
                             newContent = "\
                                 <tr> \
                                     <td>\
-                                        " + the_date + ' ' + the_time +  + "\
+                                        " + the_date + " " + the_time + "\
                                     </td>\
                                     <td>\
-                                        " + hash + ' ' + summary +  + "\
+                                        " + hash  + " " +  summary + "\
                                     </td>\
                                     <td class=\"" + repository_type + "\">\
                                         " + repository_type + "\
