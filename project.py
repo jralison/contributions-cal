@@ -140,6 +140,15 @@ class Shortener(http.server.BaseHTTPRequestHandler):
                 print("Hash: {}".format(hash))
                 summary = data['commits'][0]['message'].rstrip()[0:6] + '...'
                 print("Summary: {}".format(summary))
+            elif('git-event' in request_headers.as_string().lower()):
+                repository_type = 'Local Git'
+                print('The header contain git-event, so we assume the request is comming from local git...')
+                author = data['author']
+                print("Author: {}".format(author))
+                hash = data['hash'] 
+                print("Hash: {}".format(hash))
+                summary = data['summary'].rstrip()[0:6] + '...'
+                print("Summary: {}".format(summary))
             else:
                 repository_type = 'Bitbucket'
                 print('The header does NOT contain gitlab, so we assume the request is comming from github...')
